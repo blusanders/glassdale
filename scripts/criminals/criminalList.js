@@ -1,12 +1,25 @@
-import { getCriminals, useCriminals } from './criminalDataProvider.js'
-import { Criminal } from './criminal.js'
+import { getCriminals, useCriminals } from './CriminalDataProvider.js'
+import { Criminal } from './Criminal.js'
 
 export const CriminalList = () => {
-    getCriminals().then(
-        /*
-            Now that you have the data, what
-            component should be rendered?
-        */
 
-    )
+    const contentElement = document.querySelector(".criminalsContainer");
+
+    getCriminals()
+        .then(()=>{
+            const criminalArray = useCriminals()
+
+            let htmlRep = ""
+            //htmlRep += "<div>Criminals</div>"
+            htmlRep += "<div class=criminalContainer>"
+
+            criminalArray.forEach(criminal => {
+                htmlRep += Criminal(criminal);
+            });
+
+            htmlRep+="</div>"
+            console.log(htmlRep);
+            contentElement.innerHTML = htmlRep;
+        })
 }
+
