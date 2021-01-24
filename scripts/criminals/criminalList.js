@@ -18,7 +18,7 @@ export const CriminalList = () => {
             });
 
             htmlRep+="</div>"
-            console.log(htmlRep);
+            //console.log(htmlRep);
             contentElement.innerHTML = htmlRep;
         })
 }
