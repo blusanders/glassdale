@@ -8,12 +8,12 @@ import { getConvictions, useConvictions } from "./ConvictionProvider.js"
 const contentTarget = document.querySelector(".filters__crime")
 
 export const ConvictionSelect = () => {
-    // Trigger fetching the API data and loading it into application state
+    // Fetch all convictions from API
     getConvictions()
     .then( () => {
-      // Get all convictions from application state
-      const convictions = useConvictions()
-      render(convictions)
+        // Use slice of convictions array
+        const convictions = useConvictions()
+        render(convictions)
     })
 }
 
@@ -28,7 +28,7 @@ const render = convictionsCollection => {
                 convictionsCollection.map(convObj => {
                     const fullName = convObj.name
                     return `<option value="${convObj.id}">${fullName}</option>`
-                })
+                }).join("")
             }
         </select>
     `
