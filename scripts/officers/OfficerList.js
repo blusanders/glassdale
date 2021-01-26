@@ -1,9 +1,10 @@
 import { Officer } from "./Officer.js";
 import { getOfficers, useOfficers } from "./OfficerDataProvider.js";
 
+const contentElement = document.querySelector(".officersContainer");
+
 export const OfficerList = () => {
 
-    const contentElement = document.querySelector(".officersContainer");
 
 getOfficers()
     .then(()=>{
@@ -17,9 +18,8 @@ getOfficers()
         });
 
         htmlRep+="</div>"
-        console.log(htmlRep);
+        // console.log(htmlRep);
         contentElement.innerHTML = htmlRep;
     })
 
 }
-
