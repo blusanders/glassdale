@@ -7,6 +7,15 @@ body {
   flex-wrap: wrap;
 }
 
+.officerContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filters{
+  display: flex;
+}
+
 /* each criminal square is flexed row and wrapped */
 /* margin is distance bet each card*/
 /* fixed width so each card is equal */
@@ -14,7 +23,7 @@ body {
   /* display: flex;
   flex-direction: column; */
   justify-content: center;
-  width: 250px;
+  width: 200px;
   border: 1px dotted gray;
   margin: 10px;
   padding: 8px;

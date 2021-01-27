@@ -14,3 +14,4 @@ export const getConvictions = () => {
         .then(convictionsArray => convictions = convictionsArray)  
 
 }
+
