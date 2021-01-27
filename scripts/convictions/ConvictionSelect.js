@@ -28,7 +28,7 @@ const render = convictionsCollection => {
             ${
                 convictionsCollection.map(convObj => {
                     const fullName = convObj.name
-                    return `<option value="${fullName}">${fullName}</option>`
+                    return `<option value="${convObj.id}">${fullName}</option>`
                 }).join("")
             }
         </select>
@@ -38,11 +38,11 @@ const render = convictionsCollection => {
 // On the event hub, listen for a "change" event.
 eventHub.addEventListener("change", event => {
 
-    // Only do this if the `crimeSelect` element was changed
+    //dispatch event 
     if (event.target.id === "crimeSelect") {
-        // Create custom event. Provide an appropriate name.
-        const customEvent = new CustomEvent("crimeChosen", {
+        const customEvent = new CustomEvent("filterCriminals", {
             detail: {
+                filterType: "criminals",
                 crimeThatWasChosen: event.target.value
             }
         })
