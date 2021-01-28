@@ -1,4 +1,5 @@
 import { saveNote } from "./NoteDataProvider.js"
+import { NoteList } from "./NoteList.js"
 
 const contentTarget = document.querySelector(".noteFormContainer")
 const eventHub = document.querySelector(".container")
@@ -7,7 +8,6 @@ const render = () => {
     contentTarget.innerHTML = `
     <form class=noteForm>
     <fieldset class=noteFieldset>
-
         <label for=noteAuthor>Author:</a><br>
         <input type="text" id="noteAuthor"><br>
 
@@ -21,9 +21,10 @@ const render = () => {
         <input type="date" id="noteTimestamp"><br><br>
         
         <button id="saveNote">Save Note</button>
-    </fieldset>
+    
+        </fieldset>
     </form>
-        `
+    `
 }
 
 export const NoteForm = () => {
@@ -49,10 +50,12 @@ clickEvent.preventDefault();
 
 
 eventHub.addEventListener("noteStateChangedEvent", clickEvent => {
-   debugger
-    if (clickEvent === "noteSaved") {
-    // debugger
-        alert("Note Saved")
+    if (clickEvent.detail === "noteSaved") {
+        //reset form
+        //rerender notes
+        // debugger
+        console.log("State Changed");
+        // NoteList();
     }
     })
     
