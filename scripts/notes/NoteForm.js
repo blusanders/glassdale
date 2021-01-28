@@ -47,3 +47,12 @@ clickEvent.preventDefault();
     }
 })
 
+
+eventHub.addEventListener("noteStateChangedEvent", clickEvent => {
+   debugger
+    if (clickEvent === "noteSaved") {
+    // debugger
+        alert("Note Saved")
+    }
+    })
+    
