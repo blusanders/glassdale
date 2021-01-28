@@ -9,12 +9,11 @@ const dispatchStateChangeEvent = () => {
 let notes=[];
 
 export const useNotes = () => {
-    return notes.slice()
+    return notes.slice();
 }
 
 
 export const getNotes = () => {
-// debugger
     return fetch('http://localhost:8088/notes')
         .then(response => response.json())
         .then(parsedNotes => {

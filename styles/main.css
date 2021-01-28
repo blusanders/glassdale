@@ -34,6 +34,12 @@ flex-basis: 65%;
   display: flex;
 }
 
+.note{
+  font-size: 12px;
+  border: 1px gray dotted;
+  margin: 10px;
+}
+
 .noteFieldset{
   border: 0px;
   display: flex;
