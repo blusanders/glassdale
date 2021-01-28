@@ -1,4 +1,5 @@
 export const NoteHTMLConverter = (noteObject) => {
+// debugger
     return `
         <section class="note">
         <div class="note__author">Author: ${ noteObject.author }</div>

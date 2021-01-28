@@ -36,7 +36,7 @@ clickEvent.preventDefault();
     if (clickEvent.target.id === "saveNote") {
 // debugger
         const newNote = {
-            author: document.getElementById("noteauthor").value,
+            author: document.getElementById("noteAuthor").value,
             text: document.getElementById("noteText").value,
             suspect: document.getElementById("noteSuspect").value,
             timestamp: document.getElementById("noteTimestamp").value,

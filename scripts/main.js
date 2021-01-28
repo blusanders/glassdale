@@ -11,6 +11,4 @@ ConvictionSelect();
 OfficerSelect();
 NoteForm();
 ShowNoteButton();
-// NoteList()
-//queryselectorall
 
