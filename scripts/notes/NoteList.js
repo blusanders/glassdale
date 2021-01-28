@@ -1,19 +1,20 @@
 import { getNotes, useNotes } from "./NoteDataProvider.js";
 import { NoteHTMLConverter } from "./Note.js";
 
-const eventHub = document.querySelector(".container")
-const contentTarget = document.querySelector(".noteList")
+// Query the DOM for the element that your notes will be added to 
+const contentTarget = document.querySelector(".noteList");
+const eventHub = document.querySelector(".container");
 
 eventHub.addEventListener("showNotesClicked", customEvent => {
-    debugger
     NoteList()
 })
 
 const render = (noteArray) => {
-const allNotesConvertedToStrings = noteArray.map(
-debugger
-    // convert the notes objects to HTML with NoteHTMLConverter
-        return NoteHTMLConverter(noteArray);
+
+    const allNotesConvertedToStrings = noteArray.map( x =>{
+        // convert the notes objects to HTML with NoteHTMLConverter
+        NoteHTMLConverter(x);
+    }
     ).join("")
 
     contentTarget.innerHTML = allNotesConvertedToStrings;

@@ -8,7 +8,12 @@ const dispatchStateChangeEvent = () => {
 
 let notes=[];
 
-const getNotes = () => {
+export const useNotes = () => {
+    return notes.slice()
+}
+
+
+export const getNotes = () => {
 // debugger
     return fetch('http://localhost:8088/notes')
         .then(response => response.json())
