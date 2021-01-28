@@ -52,5 +52,3 @@ eventHub.addEventListener("change", event => {
     }
 })
 
-
-

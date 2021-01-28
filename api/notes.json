@@ -1,3 +1,32 @@
 {
-    "notes": []
+  "notes": [
+    {
+      "noteAuthor": "Blu",
+      "noteText": "Crazy Ex",
+      "noteSuspect": "Jordane West",
+      "noteTimestamp": "2020-01-02",
+      "id": 2
+    },
+    {
+      "noteAuthor": "Blu",
+      "noteText": "Innocent",
+      "noteSuspect": "Loy Gibson",
+      "noteTimestamp": "2019-12-31",
+      "id": 3
+    },
+    {
+      "noteAuthor": "Blu",
+      "noteText": "Flight Risk",
+      "noteSuspect": "Gerson Steuber",
+      "noteTimestamp": "2020-05-05",
+      "id": 4
+    },
+    {
+      "noteAuthor": "Erica",
+      "noteText": "He nuts.",
+      "noteSuspect": "Ruben Fritsch",
+      "noteTimestamp": "2018-04-27",
+      "id": 5
+    }
+  ]
 }

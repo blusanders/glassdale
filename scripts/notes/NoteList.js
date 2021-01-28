@@ -1,22 +1,22 @@
-import { getNotes, useNotes } from "./NoteProvider.js";
+import { getNotes, useNotes } from "./NoteDataProvider.js";
 import { NoteHTMLConverter } from "./Note.js";
 
-// Query the DOM for the element that your notes will be added to 
-const contentTarget = document.querySelector(???)
-// Define ye olde Evente Hubbe
-const eventHub = ???
+const eventHub = document.querySelector(".container")
+const contentTarget = document.querySelector(".noteList")
 
 eventHub.addEventListener("showNotesClicked", customEvent => {
+    debugger
     NoteList()
 })
 
 const render = (noteArray) => {
-    const allNotesConvertedToStrings = noteArray.map(
-        // convert the notes objects to HTML with NoteHTMLConverter
-
+const allNotesConvertedToStrings = noteArray.map(
+debugger
+    // convert the notes objects to HTML with NoteHTMLConverter
+        return NoteHTMLConverter(noteArray);
     ).join("")
 
-    contentTarget.innerHTML = ???
+    contentTarget.innerHTML = allNotesConvertedToStrings;
 }
 
 // Standard list function you're used to writing by now. BUT, don't call this in main.js! Why not?
