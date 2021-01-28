@@ -36,10 +36,10 @@ clickEvent.preventDefault();
     if (clickEvent.target.id === "saveNote") {
 // debugger
         const newNote = {
-            noteAuthor: document.getElementById("noteAuthor").value,
-            noteText: document.getElementById("noteText").value,
-            noteSuspect: document.getElementById("noteSuspect").value,
-            noteTimestamp: document.getElementById("noteTimestamp").value,
+            author: document.getElementById("noteauthor").value,
+            text: document.getElementById("noteText").value,
+            suspect: document.getElementById("noteSuspect").value,
+            timestamp: document.getElementById("noteTimestamp").value,
         }
 
         // Change API state and application state
