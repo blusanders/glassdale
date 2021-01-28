@@ -5,8 +5,15 @@ import { NoteHTMLConverter } from "./Note.js";
 const contentTarget = document.querySelector(".noteList");
 const eventHub = document.querySelector(".container");
 
+let notesFlag = false;
+
 eventHub.addEventListener("showNotesClicked", customEvent => {
     NoteList()
+    notesFlag = true;
+})
+
+eventHub.addEventListener("noteStateChangedEvent", clickEvent => {
+    if (notesFlag === true) { NoteList() } ;
 })
 
 const render = (noteArray) => {
@@ -14,7 +21,7 @@ const render = (noteArray) => {
     contentTarget.innerHTML = allNotesConvertedToStrings;
 }
 
-// Standard list function you're used to writing by now. BUT, don't call this in main.js! Why not?
+//Renders all notes
 export const NoteList = () => {
     getNotes()
         .then(() => {

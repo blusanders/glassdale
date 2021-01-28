@@ -35,7 +35,6 @@ export const NoteForm = () => {
 eventHub.addEventListener("click", clickEvent => {
 clickEvent.preventDefault(); 
     if (clickEvent.target.id === "saveNote") {
-// debugger
         const newNote = {
             author: document.getElementById("noteAuthor").value,
             text: document.getElementById("noteText").value,
@@ -48,14 +47,3 @@ clickEvent.preventDefault();
     }
 })
 
-
-eventHub.addEventListener("noteStateChangedEvent", clickEvent => {
-    if (clickEvent.detail === "noteSaved") {
-        //reset form
-        //rerender notes
-        // debugger
-        console.log("State Changed");
-        // NoteList();
-    }
-    })
-    
