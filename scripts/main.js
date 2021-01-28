@@ -4,7 +4,6 @@ import { ConvictionSelect } from "./convictions/ConvictionSelect.js";
 import { OfficerSelect } from "./officers/OfficerSelect.js";
 import { ShowNoteButton } from "./notes/ShowNotesButton.js";
 import { NoteForm } from "./notes/NoteForm.js";
-import { NoteList } from "./notes/NoteList.js";
 
 CriminalList();
 ConvictionSelect();
