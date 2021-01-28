@@ -1,10 +1,16 @@
 const eventHub = document.querySelector(".container")
 
 const dispatchStateChangeEvent = () => {
-    const noteStateChangedEvent = new CustomEvent("noteStateChanged")
+    // debugger
+    const noteStateChangedEvent = new CustomEvent("noteStateChangedEvent", {
+        detail: {
+            noteStateEvent: "noteSaved",
+        }  
+    })
 
     eventHub.dispatchEvent(noteStateChangedEvent)
 }
+
 
 let notes=[];
 
