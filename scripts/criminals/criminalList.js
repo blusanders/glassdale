@@ -1,45 +1,71 @@
 import { getCriminals, useCriminals } from './CriminalDataProvider.js'
 import { Criminal } from './Criminal.js'
+import { useConvictions } from './../convictions/ConvictionProvider.js'
+
 
 const contentElement = document.querySelector(".criminalsContainer");
 const eventHub = document.querySelector(".container")
 
 // Listen for the custom event you dispatched in ConvictionSelect
-eventHub.addEventListener("crimeChosen", event => {
-    // Use the property you added to the event detail.
-    if (event.detail.crimeThatWasChosen !== "0"){
-        /*
-            Filter the criminals application state down to the people that committed the crime
-        */
-        const appStateCriminals=useCriminals();
-        const matchingCriminals = appStateCriminals.filter(currentPatron => {
-            return currentPatron.conviction===event.detail.crimeThatWasChosen;
-        })
+eventHub.addEventListener("filterCriminals", filterChosenEvent => {
 
-        render(matchingCriminals);
+    //render criminals base on filter type
+    switch (filterChosenEvent.detail.filterType) {
+
+        case "criminals":
+
+            //render only if a value is selected
+            if (filterChosenEvent.detail.crimeThatWasChosen !== "0"){
+                    
+                    // find crime ID from item that was picked in dropdown from convictions data
+                    const convictionsArray = useConvictions();
+                    let chosenConvitionObj = convictionsArray.find(crimeObj=>{
+                        return crimeObj.id === parseInt(filterChosenEvent.detail.crimeThatWasChosen);
+                    })
+
+                    //filter criminal list base on ID found above
+                    const appStateCriminals=useCriminals();
+                    const matchingCriminals = appStateCriminals.filter(currentPatron => {
+                        return currentPatron.conviction===chosenConvitionObj.name;
+                    })
+
+                    render(matchingCriminals);
+                    
+                    let resetVar = document.getElementById("officerSelect");
+                    resetVar.value = 0;
+            }else{
+                CriminalList();
+            }
+            break;
+
+        case "officers":
+
+        //render only if a value is selected
+            if (filterChosenEvent.detail.officerThatWasChosen !== "0"){
+
+                // Filter criminal list by arresting officer
+                const appStateCriminals=useCriminals();
+                const matchingCriminals = appStateCriminals.filter(currentPatron => {
+                    return currentPatron.arrestingOfficer===filterChosenEvent.detail.officerThatWasChosen;
+                })
+        
+                render(matchingCriminals);
+
+                let resetVar = document.getElementById("crimeSelect");
+                resetVar.value = 0;
+            }else{
+                CriminalList();
+            }
+            break;
+
     }
 })
 
-eventHub.addEventListener("officerChosen", event => {
-    // debugger
-    // Use the property you added to the event detail.
-    if (event.detail.officerThatWasChosen !== "0"){
-        /*
-            Filter the criminals application state down to theh arresting officer
-        */
-        const appStateCriminals=useCriminals();
-        const matchingCriminals = appStateCriminals.filter(currentPatron => {
-            return currentPatron.arrestingOfficer===event.detail.officerThatWasChosen;
-        })
 
-        render(matchingCriminals);
-    }
-})
-
+//Render any criminal list to DOM
 const render = criminalArray => {
 
     let htmlRep = ""
-    //htmlRep += "<div>Criminals</div>"
     htmlRep += "<div class=criminalContainer>"
 
     criminalArray.forEach(criminal => {
@@ -47,16 +73,14 @@ const render = criminalArray => {
     });
 
     htmlRep+="</div>"
-    //console.log(htmlRep);
     contentElement.innerHTML = htmlRep;
 }
 
-// Render ALL criminals initally
+// Render ALL criminals
 export const CriminalList = () => {
     getCriminals()
         .then(() => {
             const appStateCriminals = useCriminals()
-            // debugger
             render(appStateCriminals)
         })
 }

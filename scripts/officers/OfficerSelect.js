@@ -40,8 +40,9 @@ eventHub.addEventListener("change", event => {
 
     if (event.target.id === "officerSelect") {
         // debugger
-        const customEvent = new CustomEvent("officerChosen", {
+        const customEvent = new CustomEvent("filterCriminals", {
             detail: {
+                filterType: "officers",
                 officerThatWasChosen: event.target.value
             }
         })

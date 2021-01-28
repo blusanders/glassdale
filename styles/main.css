@@ -1,8 +1,26 @@
+*{
+  /* border:1px black solid */
+}
+
 body {
   font-family: Roboto, sans-serif;
 }
 
-.criminalContainer {
+.containerMain{
+  display: flex;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.containerLeft{
+flex-basis: 65%;
+}
+
+.containerRight{
+  flex-basis: 35%;
+  }
+  
+  .criminalContainer {
   display: flex;
   flex-wrap: wrap;
 }
@@ -15,6 +33,13 @@ body {
 .filters{
   display: flex;
 }
+
+.noteFieldset{
+  border: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
 
 /* each criminal square is flexed row and wrapped */
 /* margin is distance bet each card*/
