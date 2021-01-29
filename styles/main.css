@@ -40,6 +40,15 @@ body {
   margin: 10px;
 }
 
+.alibiList {
+  width: 200px;
+}
+
+.associates {
+  font-size: 12px;
+  margin: 10px;
+}
+
 .noteFieldset {
   border: 0px;
   display: flex;
