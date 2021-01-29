@@ -1,4 +1,4 @@
-import { getCriminals, useCriminals } from './../criminals/CriminalDataProvider.js'
+import { useCriminals } from './../criminals/CriminalDataProvider.js'
 import { alibiHTML } from './Alibi.js'
 
 const contentElement = document.querySelector(".alibiList");
