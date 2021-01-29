@@ -1,4 +1,4 @@
-*{
+* {
   /* border:1px black solid */
 }
 
@@ -6,21 +6,21 @@ body {
   font-family: Roboto, sans-serif;
 }
 
-.containerMain{
+.containerMain {
   display: flex;
   border-radius: 5px;
   padding: 10px;
 }
 
-.containerLeft{
-flex-basis: 65%;
+.containerLeft {
+  flex-basis: 65%;
 }
 
-.containerRight{
+.containerRight {
   flex-basis: 35%;
-  }
-  
-  .criminalContainer {
+}
+
+.criminalContainer {
   display: flex;
   flex-wrap: wrap;
 }
@@ -30,22 +30,21 @@ flex-basis: 65%;
   flex-wrap: wrap;
 }
 
-.filters{
+.filters {
   display: flex;
 }
 
-.note{
+.note {
   font-size: 12px;
   border: 1px gray dotted;
   margin: 10px;
 }
 
-.noteFieldset{
+.noteFieldset {
   border: 0px;
   display: flex;
   flex-direction: column;
 }
-
 
 /* each criminal square is flexed row and wrapped */
 /* margin is distance bet each card*/
@@ -69,5 +68,5 @@ flex-basis: 65%;
 .criminalData {
   font-size: 13px;
   margin: 0px;
-  padding: 1px; */
+  padding: 1px;
 }

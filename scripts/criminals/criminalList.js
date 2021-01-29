@@ -1,4 +1,5 @@
 import { getCriminals, useCriminals } from './CriminalDataProvider.js'
+import { getAlibis, useAlibis } from './../alibis/AlibiDataProvider.js'
 import { Criminal } from './Criminal.js'
 import { useConvictions } from './../convictions/ConvictionProvider.js'
 
@@ -84,3 +85,22 @@ export const CriminalList = () => {
             render(appStateCriminals)
         })
 }
+
+//listen and dispatch alibi event
+eventHub.addEventListener("click", event => {
+
+    //Listen for the click and send the Alibi event into outer space
+    let clickEvent = event.target.id.split("--")[0];
+    let criminalID = event.target.id.split("--")[1];
+
+    if (clickEvent === "associates") {
+        const customEvent = new CustomEvent("alibiClick", {
+            detail: {
+                criminalID: criminalID
+            }
+        })
+
+        eventHub.dispatchEvent(customEvent)
+    }
+})
+
