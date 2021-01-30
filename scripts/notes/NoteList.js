@@ -5,15 +5,12 @@ import { NoteHTMLConverter } from "./Note.js";
 const contentTarget = document.querySelector(".noteList");
 const eventHub = document.querySelector(".container");
 
-let notesFlag = false;
-
 eventHub.addEventListener("showNotesClicked", customEvent => {
     NoteList()
-    notesFlag = true;
 })
 
 eventHub.addEventListener("noteStateChangedEvent", clickEvent => {
-    if (notesFlag === true) { NoteList() } ;
+    if(contentTarget.innerHTML !== "") { NoteList() } ;
 })
 
 const render = (noteArray) => {
