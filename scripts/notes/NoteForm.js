@@ -4,49 +4,46 @@ import { getCriminals, useCriminals } from "./../criminals/criminalDataProvider.
 const contentTarget = document.querySelector(".noteFormContainer")
 const eventHub = document.querySelector(".container")
 
-const render = (criminalSelectArray) => {
-
-    contentTarget.innerHTML = 
-
-    `<form class=noteForm>
-    <fieldset class=noteFieldset>
-        <label for=noteAuthor>Author:</a><br>
-        <input type="text" id="noteAuthor"><br>
-
-        <label for=noteAuthor>Note:</a><br>
-        <textarea id="noteText"></textarea><br>
-        
-        <label for=noteAuthor>Criminal:</a><br>
-
-        <select id="noteForm--criminal" class="criminalSelect">
-        <option value=0>Select a criminal</option>
-
-        ${
-            criminalSelectArray.map(criminal => {
-                return `<option value="${criminal.id}">${criminal.name}</option>`
-            })
-        }
-
-        </select>
-
-        <br>
-        <label for=noteTimestamp>Date:</a><br>
-        <input type="date" id="noteTimestamp"><br><br>
-        
-        <button id="saveNote">Save Note</button>
-    
-    </fieldset>
-    </form>
-    `
-}
-
-//call note form to render to DOM
+//get data for note form drop down
 export const NoteForm = () => {
     getCriminals()
     .then(() => {
         const criminalSelectArray = useCriminals()
         render(criminalSelectArray)})
 }
+
+//render note form to the DOM with the list of criminals in the dropdown
+const render = (criminalSelectArray) => {
+
+    contentTarget.innerHTML = 
+
+    `<form class=noteForm>
+
+        <label for=noteAuthor>Author:</label><br>
+        <input type="text" id="noteAuthor"><br>
+
+        <label for=noteText>Note:</a></label><br>
+        <textarea id="noteText"></textarea><br>
+        
+        <label for=noteForm--criminal>Criminal:</label><br>
+
+        <select id="noteForm--criminal" class="criminalSelect">
+        <option value=0>Select a criminal</option>
+
+        ${criminalSelectArray.map(criminal => `<option value="${criminal.id}">${criminal.name}</option>`).join(",")}
+
+        </select>
+
+        <br>
+        <label for=noteTimestamp>Date:</label><br>
+        <input type="date" id="noteTimestamp"><br><br>
+        
+        <button id="saveNote">Save Note</button>
+    
+        </form>
+    `
+}
+
 
 //listen for save click and save note to JSON file
 eventHub.addEventListener("click", clickEvent => {
@@ -55,10 +52,10 @@ clickEvent.preventDefault();
         const newNote = {
             author: document.getElementById("noteAuthor").value,
             text: document.getElementById("noteText").value,
-            // suspect: document.getElementById("noteSuspect").value,
+            suspect: parseInt(document.getElementById("noteForm--criminal").value),
             timestamp: document.getElementById("noteTimestamp").value,
         }
-
+        //console.log(newNote)
         saveNote(newNote);
     }
 })

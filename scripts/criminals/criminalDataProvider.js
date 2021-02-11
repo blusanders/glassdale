@@ -5,6 +5,7 @@ export const useCriminals = () => {
     criminals.sort((a,b) => {
             const aLast = a.name.split(" ")[1]
             const bLast = b.name.split(" ")[1]
+
             if (aLast < bLast) {return -1}
             if (aLast > bLast) {return 1}
             return 0 

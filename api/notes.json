@@ -3,30 +3,31 @@
     {
       "author": "1",
       "noteText": "1",
-      "criminalId": "11",
+      "criminalId": 4,
       "timestamp": "2000-01-01",
       "id": 1
     },
     {
       "author": "1",
       "noteText": "2",
-      "criminalId": "24",
+      "criminalId": 12,
       "timestamp": "2000-01-01",
       "id": 2
     },
     {
       "author": "1",
       "noteText": "3",
-      "criminalId": "31",
+      "criminalId": 21,
       "timestamp": "2000-01-01",
       "id": 3
     },
     {
       "author": "1",
       "noteText": "4",
-      "criminalId": "14",
+      "criminalId": 9,
       "timestamp": "2000-01-01",
       "id": 4
+  
     }
   ]
 }
