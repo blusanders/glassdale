@@ -2,178 +2,31 @@
   "notes": [
     {
       "author": "1",
-      "text": "1",
-      "suspect": "1",
+      "noteText": "1",
+      "criminalId": "11",
       "timestamp": "2000-01-01",
       "id": 1
     },
     {
-      "author": "2",
-      "text": "2",
-      "suspect": "2",
+      "author": "1",
+      "noteText": "2",
+      "criminalId": "24",
       "timestamp": "2000-01-01",
       "id": 2
     },
     {
-      "author": "3",
-      "text": "3",
-      "suspect": "3",
+      "author": "1",
+      "noteText": "3",
+      "criminalId": "31",
       "timestamp": "2000-01-01",
       "id": 3
     },
     {
-      "author": "4",
-      "text": "4",
-      "suspect": "4",
-      "timestamp": "1984-01-02",
+      "author": "1",
+      "noteText": "4",
+      "criminalId": "14",
+      "timestamp": "2000-01-01",
       "id": 4
-    },
-    {
-      "author": "5",
-      "text": "5",
-      "suspect": "5",
-      "timestamp": "2000-01-02",
-      "id": 5
-    },
-    {
-      "author": "6",
-      "text": "6",
-      "suspect": "6",
-      "timestamp": "2010-08-09",
-      "id": 6
-    },
-    {
-      "author": "7",
-      "text": "7",
-      "suspect": "7",
-      "timestamp": "1974-05-24",
-      "id": 7
-    },
-    {
-      "author": "8",
-      "text": "8",
-      "suspect": "8",
-      "timestamp": "2000-04-06",
-      "id": 8
-    },
-    {
-      "author": "9",
-      "text": "9",
-      "suspect": "9",
-      "timestamp": "2021-01-01",
-      "id": 9
-    },
-    {
-      "author": "10",
-      "text": "10",
-      "suspect": "10",
-      "timestamp": "2021-01-01",
-      "id": 10
-    },
-    {
-      "author": "11",
-      "text": "11",
-      "suspect": "11",
-      "timestamp": "2015-01-11",
-      "id": 11
-    },
-    {
-      "author": "11",
-      "text": "11",
-      "suspect": "11",
-      "timestamp": "2015-01-11",
-      "id": 12
-    },
-    {
-      "author": "11",
-      "text": "11",
-      "suspect": "11",
-      "timestamp": "2015-01-11",
-      "id": 13
-    },
-    {
-      "author": "11",
-      "text": "11",
-      "suspect": "11",
-      "timestamp": "2015-01-11",
-      "id": 14
-    },
-    {
-      "author": "11",
-      "text": "11",
-      "suspect": "11",
-      "timestamp": "2015-01-11",
-      "id": 15
-    },
-    {
-      "author": "12",
-      "text": "12",
-      "suspect": "12",
-      "timestamp": "2015-01-16",
-      "id": 16
-    },
-    {
-      "author": "13",
-      "text": "13",
-      "suspect": "13",
-      "timestamp": "1944-01-01",
-      "id": 17
-    },
-    {
-      "author": "20",
-      "text": "20",
-      "suspect": "20",
-      "timestamp": "2000-02-02",
-      "id": 18
-    },
-    {
-      "author": "21",
-      "text": "21",
-      "suspect": "21",
-      "timestamp": "1974-01-19",
-      "id": 19
-    },
-    {
-      "author": "Blu",
-      "text": "This is a Note",
-      "suspect": "Bad Guy",
-      "timestamp": "2020-04-05",
-      "id": 20
-    },
-    {
-      "author": "400",
-      "text": "400",
-      "suspect": "400",
-      "timestamp": "2002-05-01",
-      "id": 21
-    },
-    {
-      "author": "100",
-      "text": "100",
-      "suspect": "100",
-      "timestamp": "1942-06-07",
-      "id": 22
-    },
-    {
-      "author": "100",
-      "text": "100",
-      "suspect": "100",
-      "timestamp": "1942-06-07",
-      "id": 23
-    },
-    {
-      "author": "44",
-      "text": "44",
-      "suspect": "44",
-      "timestamp": "2012-01-01",
-      "id": 24
-    },
-    {
-      "author": "44",
-      "text": "44",
-      "suspect": "44",
-      "timestamp": "2012-01-01",
-      "id": 25
     }
   ]
 }

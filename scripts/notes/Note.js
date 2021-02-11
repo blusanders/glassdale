@@ -4,8 +4,9 @@ export const NoteHTMLConverter = (noteObject) => {
         <section class="note">
         <div class="note__author">Author: ${ noteObject.author }</div>
         <div class="note__timestamp">Timestamp: ${noteObject.timestamp}</div>
-        <div class="note__suspect">Title: ${ noteObject.suspect }</div>
-        <div class="note__text">${ noteObject.text }</div>
+        <div class="note__suspect">Title: ${ noteObject.criminalID }</div>
+
+        <div class="note__text">${ noteObject.noteText }</div>
         </section>
     `
 }
