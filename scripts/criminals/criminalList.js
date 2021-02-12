@@ -94,6 +94,7 @@ eventHub.addEventListener("click", event => {
     let criminalID = event.target.id.split("--")[1];
 
     if (clickEvent === "associates") {
+// debugger
         const customEvent = new CustomEvent("alibiClick", {
             detail: {
                 criminalID: criminalID

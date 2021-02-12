@@ -1,8 +1,9 @@
 import { saveNote } from "./NoteDataProvider.js"
+import { NoteList } from "./NoteList.js";
 import { getCriminals, useCriminals } from "./../criminals/criminalDataProvider.js"
 
-const contentTarget = document.querySelector(".noteFormContainer")
 const eventHub = document.querySelector(".container")
+const contentTarget = document.querySelector(".noteFormContainer")
 
 //get data for note form drop down
 export const NoteForm = () => {
@@ -30,7 +31,7 @@ const render = (criminalSelectArray) => {
         <select id="noteForm--criminal" class="criminalSelect">
         <option value=0>Select a criminal</option>
 
-        ${criminalSelectArray.map(criminal => `<option value="${criminal.id}">${criminal.name}</option>`).join(",")}
+        ${criminalSelectArray.map(criminal => `<option value="${criminal.id}">${criminal.id} - ${criminal.name}</option>`).join(",")}
 
         </select>
 
@@ -38,8 +39,10 @@ const render = (criminalSelectArray) => {
         <label for=noteTimestamp>Date:</label><br>
         <input type="date" id="noteTimestamp"><br><br>
         
-        <button id="saveNote">Save Note</button>
-    
+        <div>
+        <div><button id="saveNote">Save Note</button></div>
+        <div class=errorMessage id=noteErrorMessage></div>
+        </div>
         </form>
     `
 }
@@ -52,11 +55,43 @@ clickEvent.preventDefault();
         const newNote = {
             author: document.getElementById("noteAuthor").value,
             text: document.getElementById("noteText").value,
-            suspect: parseInt(document.getElementById("noteForm--criminal").value),
+            criminalId: parseInt(document.getElementById("noteForm--criminal").value),
             timestamp: document.getElementById("noteTimestamp").value,
         }
-        //console.log(newNote)
-        saveNote(newNote);
+        console.log(newNote)
+        if (formIsValid()){
+            saveNote(newNote);
+            clearForm();
+            NoteList();
+            //clear error message
+            document.getElementById("noteErrorMessage").innerHTML = ""
+            console.log("valid");
+        }else{
+            //render error message
+            document.getElementById("noteErrorMessage").innerHTML = "Invalid"
+            console.log("Not valid");
+        }
     }
 })
 
+
+//validate note input fields before submitting
+const formIsValid = () => {
+    if (
+        (document.getElementById("noteTimestamp").value != "") &&
+        (document.getElementById("noteText").value != "") &&
+        (document.getElementById("noteAuthor").value != "") &&
+        (parseInt(document.getElementById("noteForm--criminal").value) != 0)
+        )
+    {
+        return true
+    }
+}
+
+//clear note form after adding note
+const clearForm = () => {
+    document.getElementById("noteTimestamp").value = "";
+    document.getElementById("noteText").value = "";
+    document.getElementById("noteAuthor").value = "";
+    document.getElementById("noteForm--criminal").value = 0
+}

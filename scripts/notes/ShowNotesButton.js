@@ -1,11 +1,11 @@
 import { NoteList } from "./../notes/NoteList.js";
 
-const contentTarget = document.querySelector(".noteListButton")
 const eventHub = document.querySelector(".container")
+const contentTarget = document.querySelector(".noteListButton")
 
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "showNotes") {
-        NoteList;
+        NoteList();
         const customEvent = new CustomEvent("showNotesClicked")
         eventHub.dispatchEvent(customEvent)
     }

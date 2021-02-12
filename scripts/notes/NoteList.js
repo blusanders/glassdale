@@ -17,9 +17,10 @@ eventHub.addEventListener("noteStateChangedEvent", clickEvent => {
 const render = (noteCollection, criminalCollection) => {
     contentTarget.innerHTML = noteCollection.map(note => {
         // Find the related criminal
+        // debugger
         const relatedCriminal = criminalCollection.find(criminal => criminal.id === note.criminalId)
         return NoteHTMLConverter(note,relatedCriminal)
-    })
+    }).join("")
 }
 
 //get all notes and criminals
@@ -29,7 +30,6 @@ export const NoteList = () => {
         .then(() => {
             const notes = useNotes()
             const criminals = useCriminals()
-// debugger
             render(notes, criminals)
         })
 }

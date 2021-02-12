@@ -1,10 +1,13 @@
+import {witnessList} from "./../witnesses/witnessList.js"
+
+
 const contentTarget = document.querySelector(".showWitnessesButton")
 const eventHub = document.querySelector(".container")
 
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "showWitnessesButton") {
         // debugger
-        ShowWitnesses();
+        witnessList();
         const customEvent = new CustomEvent("showWitnessesClicked")
         eventHub.dispatchEvent(customEvent)
     }

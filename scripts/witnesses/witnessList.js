@@ -1,28 +1,28 @@
-import { useCriminals } from './../criminals/CriminalDataProvider.js'
-import { alibiHTML } from './Alibi.js'
+import { witnessHTML } from './witness.js';
+import { getWitnesses, useWitnesses } from './witnessDataProvider.js';
 
-const contentElement = document.querySelector(".criminalsContainer");
+const contentTarget = document.querySelector(".witnessesContainer");
 const eventHub = document.querySelector(".container")
 
 // Listen for the custom event you dispatched in ConvictionSelect
 eventHub.addEventListener("showWitnessesClicked", event => {
-
-    //set ID to ID from click event
-    const criminalID=parseInt(event.detail.criminalID);
- 
-    //get list of criminals
-    const alibiArray = useCriminals();
- 
-    //return array per ID
-    const foundAssocArray = (alibiArray.find(x => (x.id === criminalID))).known_associates;
- 
-    //create list of known assoc with HTML
-    let renderAlibiHTML=""
-    foundAssocArray.forEach(element => {
-        renderAlibiHTML += alibiHTML(element);
-    });
- 
-    //render assoc to DOM
-    contentElement.innerHTML = renderAlibiHTML;
+    witnessList();
 })
+
+export const witnessList = () => {
+    getWitnesses()
+        .then(() => {
+            const witnessesArray = useWitnesses()
+// debugger
+            render(witnessesArray)
+        })
+}
+
+    const render = (witnessesArray) => {
+        let renderHTML = "<div><h2>Witnesses</h2>"
+        renderHTML += witnessesArray.map(witness => {
+            return witnessHTML(witness)
+        }).join("")
+        contentTarget.innerHTML = renderHTML
+    }
 
