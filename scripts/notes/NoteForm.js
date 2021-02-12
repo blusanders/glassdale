@@ -47,11 +47,13 @@ const render = (criminalSelectArray) => {
     `
 }
 
-
 //listen for save click and save note to JSON file
 eventHub.addEventListener("click", clickEvent => {
 clickEvent.preventDefault(); 
+
+    //if save note button clicked do the following
     if (clickEvent.target.id === "saveNote") {
+        //build new note object
         const newNote = {
             author: document.getElementById("noteAuthor").value,
             text: document.getElementById("noteText").value,
@@ -59,21 +61,23 @@ clickEvent.preventDefault();
             timestamp: document.getElementById("noteTimestamp").value,
         }
         console.log(newNote)
+
+        //only save note if form filled out
         if (formIsValid()){
             saveNote(newNote);
             clearForm();
+            //refresh notes to see new note 
             NoteList();
-            //clear error message
+            //clear error message div
             document.getElementById("noteErrorMessage").innerHTML = ""
             console.log("valid");
         }else{
-            //render error message
+            //render error message if all fields not filled in
             document.getElementById("noteErrorMessage").innerHTML = "Invalid"
             console.log("Not valid");
         }
     }
 })
-
 
 //validate note input fields before submitting
 const formIsValid = () => {
