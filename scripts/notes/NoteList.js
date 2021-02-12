@@ -24,13 +24,13 @@ eventHub.addEventListener("click", clickEvent => {
             Once the operation is complete you should THEN invoke
             useNotes() and render the note list again.
         */
-       deleteNote(id).then(
-           () => {
-               const updatedNotes = useNotes()
-               const criminals = useCriminals()
-               render(updatedNotes, criminals)
-           }
-       )
+        deleteNote(id).then(
+            () => {
+                const updatedNotes = useNotes()
+                const criminals = useCriminals()
+                render(updatedNotes, criminals)
+            }
+        )
     }
 })
 

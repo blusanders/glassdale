@@ -73,7 +73,7 @@ clickEvent.preventDefault();
             console.log("valid");
         }else{
             //render error message if all fields not filled in
-            document.getElementById("noteErrorMessage").innerHTML = "Invalid"
+            document.getElementById("noteErrorMessage").innerHTML = "Fill that shit in man"
             console.log("Not valid");
         }
     }
