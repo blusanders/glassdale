@@ -1,7 +1,7 @@
 let criminals = []
 
 export const useCriminals = () => {
-
+// debugger
     return criminals.sort((a,b) => {
             const aLast = a.name.split(" ")[1]
             const bLast = b.name.split(" ")[1]
@@ -19,7 +19,7 @@ export const getCriminals = () => {
     .then(response => response.json())
     .then(
         parsedCriminals => {
-            //console.table(parsedCriminals);
+            console.table(parsedCriminals);
             criminals = parsedCriminals;
         }  
     )

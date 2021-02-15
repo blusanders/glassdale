@@ -43,7 +43,7 @@ const render = (criminalSelectArray) => {
         <div><button id="saveNote">Save Note</button></div>
         <div class=errorMessage id=noteErrorMessage></div>
         </div>
-        </form>
+    </form>
     `
 }
 

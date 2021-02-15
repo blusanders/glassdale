@@ -10,6 +10,7 @@ body {
 
 header{
   background-color: #c0e0de;
+  padding: 5px;
   /* color: white; */
 }
 .containerMain {
@@ -48,6 +49,19 @@ header{
   margin: 10px;
   background-color: #a2d2df;
   border-radius: 5%;
+}
+
+.noteFormContainer{
+  background-color: honeydew;
+  padding: 5px
+}
+
+.noteList{
+  padding: 5px
+}
+
+.noteListButton{
+  padding: 5px
 }
 
 .alibiList {
