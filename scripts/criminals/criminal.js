@@ -20,7 +20,7 @@ return `
         <h4>${criminalObject.name}</h4>
             <p class="criminalData criminalData__conviction">Convicted for ${criminalObject.conviction}</p>
             <p class="criminalData criminalData__arrestingOfficer">Arrested by ${criminalObject.arrestingOfficer}</p>
-            <p class="criminalData"> Incarcerated between:
+            <p class="criminalData">Incarcerated between:
                 ${new Date(criminalObject.incarceration.start).toLocaleDateString()} and
                 ${new Date(criminalObject.incarceration.end).toLocaleDateString()}
             </p>
@@ -32,10 +32,7 @@ return `
                 </ul>
             </div>
             <button id="associates--${criminalObject.id}">Show Associates</button>
-        </div>
     </div>
     `
 }
 
-
-/* <div class="criminal__details"> */

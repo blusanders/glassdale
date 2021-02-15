@@ -1,9 +1,9 @@
 export const witnessHTML  = (witnessObj) => {
     // debugger
         return `
-            <section class="eachWitness">
-            <div class="note__author">Witness: ${ witnessObj.name }</div>
-            <div class="note__author">Statements: ${ witnessObj.statements }</div>
-            </section>
+            <div class="witnessCard">
+            <div class="witness__name">Witness: ${ witnessObj.name }</div>
+            <div class="witness__statements">Statements: ${ witnessObj.statements }</div>
+            </div>
         `
     }

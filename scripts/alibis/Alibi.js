@@ -6,7 +6,6 @@ export const alibiHTML  = (alibiObj) => {
     <div id="alibi__modal" class="zmodal">
     <div class="zmodal-content">
     <section class="associates">
-    <div>Known Associates</div>
     <div class="associate__name">Name: ${ alibiObj.name }</div>
     <div class="associate__alibi">Alibi: ${ alibiObj.alibi }</div>
     

@@ -7,6 +7,7 @@ import { useConvictions } from './../convictions/ConvictionProvider.js'
 
 
 const contentTarget = document.querySelector(".criminalContainer");
+const contentTargetWitnesses = document.querySelector(".witnessesContainer")
 const eventHub = document.querySelector(".container")
 
 // Listen for the custom event you dispatched in ConvictionSelect
@@ -71,24 +72,15 @@ eventHub.addEventListener("filterCriminals", filterChosenEvent => {
     }
 })
 
-
-//Render any criminal list to DOM
-// const render = criminalArray => {
-
-//     let htmlRep = ""
-//     htmlRep += "<div class=criminalContainer>"
-
-//     criminalArray.forEach(criminal => {
-//         htmlRep += Criminal(criminal);
-//     });
-
-//     htmlRep+="</div>"
-//     contentElement.innerHTML = htmlRep;
-// }
-
 const render = (criminalsToRender, allFacilities, allRelationships) => {
-    // Step 1 - Iterate all criminals
-    contentTarget.innerHTML = criminalsToRender.map(
+
+    let renderHTML = `
+    <div class="criminalHeader">
+    <div><h2>Criminals</h2></div>
+    </div>
+    <div class="criminalContent">`
+
+    renderHTML += criminalsToRender.map(
         (criminalObject) => {
             // Step 2 - Filter all relationships to get only ones for this criminal
             const facilityRelationshipsForThisCriminal = allRelationships.filter(cf => cf.criminalId === criminalObject.id)
@@ -103,9 +95,16 @@ const render = (criminalsToRender, allFacilities, allRelationships) => {
             return Criminal(criminalObject, facilities)
         }
     ).join("")
+
+    renderHTML += "</div>"
+    //clear witnesses
+    contentTargetWitnesses.innerHTML=""
+    //render criminals
+    contentTarget.innerHTML = renderHTML
+
 }
 
-// Render ALL criminals
+// Render ALL criminals with facilities
 export const CriminalList = () => {
     getFacilities()
     .then(getCriminalFacilities)
@@ -116,31 +115,30 @@ export const CriminalList = () => {
             const facilities = useFacilities()
             const crimFac = useCriminalFacilities()
             const criminals = useCriminals()
-
+// debugger
             // Pass all three collections of data to render()
             render(criminals, facilities, crimFac)
         }
     )
 }
 
-
-//     getCriminals()
-//         .then(() => {
-//             const appStateCriminals = useCriminals()
-//             render(appStateCriminals)
-//         })
-// }
-
-//listen and dispatch alibi event
+//listen for show criminals or associates buttons
 eventHub.addEventListener("click", event => {
 
-    //Listen for the click and send the Alibi event into outer space
+    //if criminals then show all criminals
+    if (event.target.id === "showCriminalsButton"){
+        // debugger
+        CriminalList();
+        return
+    }
+
+    //if an associates button then show associates
+    if (event.target.id.startsWith("associates")) {
+
     let clickEvent = event.target.id.split("--")[0];
     let criminalID = event.target.id.split("--")[1];
 
-    if (clickEvent === "associates") {
-// debugger
-        const customEvent = new CustomEvent("alibiClick", {
+    const customEvent = new CustomEvent("alibiClick", {
             detail: {
                 criminalID: criminalID
             }
