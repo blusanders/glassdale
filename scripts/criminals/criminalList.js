@@ -6,6 +6,7 @@ import { Criminal } from './Criminal.js'
 import { useConvictions } from './../convictions/ConvictionProvider.js'
 
 
+const contentTargetFacilities = document.querySelector(".facilitiesContainer");
 const contentTarget = document.querySelector(".criminalContainer");
 const contentTargetWitnesses = document.querySelector(".witnessesContainer")
 const eventHub = document.querySelector(".container")
@@ -40,7 +41,9 @@ eventHub.addEventListener("filterCriminals", filterChosenEvent => {
 
                     let resetVar = document.getElementById("officerSelect");
                     resetVar.value = 0;
-            }else{
+                    contentTargetFacilities.innerHTML="";
+                    
+                }else{
                 CriminalList();
             }
             break;
@@ -64,6 +67,8 @@ eventHub.addEventListener("filterCriminals", filterChosenEvent => {
 
                 let resetVar = document.getElementById("crimeSelect");
                 resetVar.value = 0;
+                contentTargetFacilities.innerHTML="";
+
             }else{
                 CriminalList();
             }

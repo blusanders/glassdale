@@ -15,18 +15,18 @@
       "id": 16
     },
     {
-      "author": "654",
-      "text": "645",
-      "criminalId": 45,
-      "timestamp": "2000-01-01",
-      "id": 17
-    },
-    {
       "author": "564",
       "text": "132",
       "criminalId": 31,
       "timestamp": "2000-01-01",
       "id": 18
+    },
+    {
+      "author": "Blu",
+      "text": "This is the note field text",
+      "criminalId": 98,
+      "timestamp": "2002-02-02",
+      "id": 19
     }
   ]
 }

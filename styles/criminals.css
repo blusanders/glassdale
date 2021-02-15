@@ -1,0 +1,31 @@
+.criminalContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:column;
+}
+
+.criminalContent {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.criminalCard {
+    justify-content: center;
+    width: 140px;
+    margin: 10px;
+    padding: 8px;
+    background-color: lightsteelblue;
+    border-radius: 5%;
+    font-size: 13px;
+}
+
+.criminalNames .witness__name {
+    font-size: 18px;
+}
+
+  /* data inside each square */
+.criminalData {
+    font-size: 13px;
+    margin: 0px;
+    padding: 1px;
+}

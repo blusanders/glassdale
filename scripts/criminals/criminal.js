@@ -17,7 +17,7 @@ export const Criminal = (criminalObject, facilities) => {
 
 return `
     <div class="criminalCard">
-        <h4>${criminalObject.name}</h4>
+        <h3>${criminalObject.name}</h4>
             <p class="criminalData criminalData__conviction">Convicted for ${criminalObject.conviction}</p>
             <p class="criminalData criminalData__arrestingOfficer">Arrested by ${criminalObject.arrestingOfficer}</p>
             <p class="criminalData">Incarcerated between:
