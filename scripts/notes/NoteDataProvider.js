@@ -46,4 +46,5 @@ export const deleteNote = noteId => {
         method: "DELETE"
     })
         .then(getNotes)
+        .then(dispatchStateChangeEvent)
 }

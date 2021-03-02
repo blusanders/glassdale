@@ -2,6 +2,7 @@ import { witnessHTML } from './witness.js';
 import { getWitnesses, useWitnesses } from './witnessDataProvider.js';
 
 const contentTarget = document.querySelector(".witnessesContainer");
+const contentTargetFacilities = document.querySelector(".facilitiesContainer");
 const contentTargetCriminals = document.querySelector(".criminalContainer");
 const eventHub = document.querySelector(".container")
 
@@ -26,6 +27,7 @@ export const witnessList = () => {
             return witnessHTML(witness)
         }).join("")
         renderHTML += "</div>"
+        contentTargetFacilities.innerHTML=""
         contentTarget.innerHTML = renderHTML
     }
 
