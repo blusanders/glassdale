@@ -1,0 +1,22 @@
+.facilityCard {
+    justify-content: center;
+    width: 140px;
+    margin: 10px;
+    padding: 8px;
+    background-color:lightgrey;
+    border-radius: 5%;
+}
+
+.facilityData{
+    font-size: 13px;
+    margin: 0px;
+    padding: 1px;
+}
+
+.facilityContent{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+

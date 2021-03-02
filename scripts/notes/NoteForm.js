@@ -1,49 +1,101 @@
 import { saveNote } from "./NoteDataProvider.js"
-import { NoteList } from "./NoteList.js"
+import { NoteList } from "./NoteList.js";
+import { getCriminals, useCriminals } from "./../criminals/criminalDataProvider.js"
 
-const contentTarget = document.querySelector(".noteFormContainer")
 const eventHub = document.querySelector(".container")
+const contentTarget = document.querySelector(".noteFormContainer")
 
-const render = () => {
-    contentTarget.innerHTML = `
-    <form class=noteForm>
-    <fieldset class=noteFieldset>
-        <label for=noteAuthor>Author:</a><br>
+//get data for note form drop down
+export const NoteForm = () => {
+    getCriminals()
+    .then(() => {
+        const criminalSelectArray = useCriminals()
+        render(criminalSelectArray)})
+}
+
+//render note form to the DOM with the list of criminals in the dropdown
+const render = (criminalSelectArray) => {
+
+    contentTarget.innerHTML = 
+
+    `<form class=noteForm>
+
+        <label for=noteAuthor>Author:</label><br>
         <input type="text" id="noteAuthor"><br>
 
-        <label for=noteAuthor>Note:</a><br>
+        <label for=noteText>Note:</a></label><br>
         <textarea id="noteText"></textarea><br>
         
-        <label for=noteAuthor>Suspect:</a><br>
-        <input type="text" id="noteSuspect"><br>
-        
-        <label for=noteTimestamp>Date:</a><br>
+        <label for=noteForm--criminal>Criminal:</label><br>
+
+        <select id="noteForm--criminal" class="criminalSelect">
+        <option value=0>Select a criminal</option>
+
+        ${criminalSelectArray.map(criminal => `<option value="${criminal.id}">${criminal.id} - ${criminal.name}</option>`).join(",")}
+
+        </select>
+
+        <br>
+        <label for=noteTimestamp>Date:</label><br>
         <input type="date" id="noteTimestamp"><br><br>
         
-        <button id="saveNote">Save Note</button>
-    
-        </fieldset>
+        <div>
+        <div><button id="saveNote">Save Note</button></div>
+        <div class=errorMessage id=noteErrorMessage></div>
+        </div>
     </form>
     `
 }
 
-export const NoteForm = () => {
-    render()
-}
-
-// Handle browser-generated click event in component
+//listen for save click and save note to JSON file
 eventHub.addEventListener("click", clickEvent => {
 clickEvent.preventDefault(); 
+
+    //if save note button clicked do the following
     if (clickEvent.target.id === "saveNote") {
+        //build new note object
         const newNote = {
             author: document.getElementById("noteAuthor").value,
             text: document.getElementById("noteText").value,
-            suspect: document.getElementById("noteSuspect").value,
+            criminalId: parseInt(document.getElementById("noteForm--criminal").value),
             timestamp: document.getElementById("noteTimestamp").value,
         }
+        console.log(newNote)
 
-        // Change API state and application state
-        saveNote(newNote);
+        //only save note if form filled out
+        if (formIsValid()){
+            saveNote(newNote);
+            clearForm();
+            //refresh notes to see new note 
+            NoteList();
+            //clear error message div
+            document.getElementById("noteErrorMessage").innerHTML = ""
+            console.log("valid");
+        }else{
+            //render error message if all fields not filled in
+            document.getElementById("noteErrorMessage").innerHTML = "Fill that shit in man"
+            console.log("Not valid");
+        }
     }
 })
 
+//validate note input fields before submitting
+const formIsValid = () => {
+    if (
+        (document.getElementById("noteTimestamp").value != "") &&
+        (document.getElementById("noteText").value != "") &&
+        (document.getElementById("noteAuthor").value != "") &&
+        (parseInt(document.getElementById("noteForm--criminal").value) != 0)
+        )
+    {
+        return true
+    }
+}
+
+//clear note form after adding note
+const clearForm = () => {
+    document.getElementById("noteTimestamp").value = "";
+    document.getElementById("noteText").value = "";
+    document.getElementById("noteAuthor").value = "";
+    document.getElementById("noteForm--criminal").value = 0
+}

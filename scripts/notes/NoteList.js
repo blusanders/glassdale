@@ -1,4 +1,5 @@
-import { getNotes, useNotes } from "./NoteDataProvider.js";
+import { getNotes, useNotes, deleteNote } from "./NoteDataProvider.js";
+import { getCriminals, useCriminals } from './../criminals/CriminalDataProvider.js'
 import { NoteHTMLConverter } from "./Note.js";
 
 // Query the DOM for the element that your notes will be added to 
@@ -13,17 +14,43 @@ eventHub.addEventListener("noteStateChangedEvent", clickEvent => {
     if(contentTarget.innerHTML !== "") { NoteList() } ;
 })
 
-const render = (noteArray) => {
-    const allNotesConvertedToStrings = noteArray.map( noteObj => NoteHTMLConverter(noteObj)).join("");
-    contentTarget.innerHTML = allNotesConvertedToStrings;
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("deleteNote--")) {
+        const [prefix, id] = clickEvent.target.id.split("--")
+
+        /*
+            Invoke the function that performs the delete operation.
+
+            Once the operation is complete you should THEN invoke
+            useNotes() and render the note list again.
+        */
+        deleteNote(id).then(
+            () => {
+                const updatedNotes = useNotes()
+                const criminals = useCriminals()
+                render(updatedNotes, criminals)
+            }
+        )
+    }
+})
+
+const render = (noteCollection, criminalCollection) => {
+    contentTarget.innerHTML = noteCollection.map(note => {
+        // Find the related criminal
+        // debugger
+        const relatedCriminal = criminalCollection.find(criminal => criminal.id === note.criminalId)
+        return NoteHTMLConverter(note,relatedCriminal)
+    }).join("")
 }
 
-//Renders all notes
+//get all notes and criminals
 export const NoteList = () => {
     getNotes()
+        .then(getCriminals)
         .then(() => {
-            const allNotes = useNotes()
-            render(allNotes)
+            const notes = useNotes()
+            const criminals = useCriminals()
+            render(notes, criminals)
         })
 }
 

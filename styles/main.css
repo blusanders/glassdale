@@ -1,3 +1,7 @@
+@import "modal.css";
+@import "facilities.css";
+@import "criminals.css";
+
 * {
   /* border:1px black solid */
 }
@@ -6,10 +10,16 @@ body {
   font-family: Roboto, sans-serif;
 }
 
+header{
+  background-color: #c0e0de;
+  padding: 5px;
+  /* color: white; */
+}
 .containerMain {
   display: flex;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 10px;
+  background-color: lightslategray;
 }
 
 .containerLeft {
@@ -20,9 +30,8 @@ body {
   flex-basis: 35%;
 }
 
-.criminalContainer {
+.containerLeft__header{
   display: flex;
-  flex-wrap: wrap;
 }
 
 .officerContainer {
@@ -36,8 +45,24 @@ body {
 
 .note {
   font-size: 12px;
-  border: 1px gray dotted;
+  /* border: 1px gray dotted; */
+  padding: 5px;
   margin: 10px;
+  background-color: #a2d2df;
+  border-radius: 5%;
+}
+
+.noteFormContainer{
+  background-color: honeydew;
+  padding: 5px
+}
+
+.noteList{
+  padding: 5px
+}
+
+.noteListButton{
+  padding: 5px
 }
 
 .alibiList {
@@ -55,27 +80,17 @@ body {
   flex-direction: column;
 }
 
-/* each criminal square is flexed row and wrapped */
-/* margin is distance bet each card*/
-/* fixed width so each card is equal */
-.criminalCard {
-  /* display: flex;
-  flex-direction: column; */
+.errorMessage{
+  color: red;
+}
+
+.witnessCard{
   justify-content: center;
-  width: 200px;
-  border: 1px dotted gray;
+  width: 240px;
   margin: 10px;
   padding: 8px;
-}
-
-/* data inside each square */
-.criminalNames {
-  font-size: 18px;
-}
-
-/* data inside each square */
-.criminalData {
+  background-color: lightgoldenrodyellow;
+  border-radius: 5%;
   font-size: 13px;
-  margin: 0px;
-  padding: 1px;
 }
+

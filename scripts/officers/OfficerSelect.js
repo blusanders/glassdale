@@ -46,7 +46,7 @@ eventHub.addEventListener("change", event => {
                 officerThatWasChosen: event.target.value
             }
         })
-
+        // console.log(customEvent)
         eventHub.dispatchEvent(customEvent)
     }
 })
